@@ -1,0 +1,70 @@
+.voting {
+    display: flex;
+    justify-content: center;
+}
+
+.vote-for-issue,
+.vote-for-person {
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.issue-description {
+    font-size: 3rem;
+}
+
+.candidates {
+    display: flex;
+    max-width: 80%;
+    overflow: auto;
+}
+
+.candidate {
+    text-align: center;
+    margin: 0 20px;
+}
+
+.candidate:hover {
+    cursor: pointer;
+}
+
+.candidate img {
+    width: 220px;
+    height: 280px;
+}
+
+.candidate p {
+    font-size: 1.5rem;
+}
+
+.err {
+    font-size: 8rem;
+    margin-top: 50px;
+}
+
+.opinion {
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 50%;
+}
+
+.opinion div,
+.confirm {
+    width: 180px;
+    margin-top: 20px;
+    border-radius: 20px;
+    background: #e0e0e0;
+    box-shadow: 5px 5px 10px #bebebe,
+        -5px -5px 10px #ffffff;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.confirm:hover {
+    cursor: pointer;
+}

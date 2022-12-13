@@ -1,0 +1,33 @@
+.titles {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.title {
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #e0e0e0;
+    box-shadow: 5px 5px 10px #bebebe,
+        -5px -5px 10px #ffffff;
+    font-size: 2rem;
+}
+
+.title:hover {
+    cursor: pointer;
+}
+
+.active {
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #e0e0e0;
+    box-shadow: inset 5px 5px 10px #bebebe,
+        inset -5px -5px 10px #ffffff;
+    font-size: 2rem;
+}
+
+.content {
+    display: none;
+}

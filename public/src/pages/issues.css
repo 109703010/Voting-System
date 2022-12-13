@@ -1,0 +1,29 @@
+.issues {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.issue {
+    width: 50%;
+    height: fit-content;
+    border-radius: 50px;
+    margin-top: 30px;
+    background: #e0e0e0;
+    box-shadow: 5px 5px 10px #bebebe,
+        -5px -5px 10px #ffffff;
+    text-align: center;
+    font-size: 3rem;
+}
+
+
+.issue:hover {
+    cursor: pointer;
+}
+
+.issue a {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
