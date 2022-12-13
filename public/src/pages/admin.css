@@ -1,0 +1,135 @@
+.admin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.info-modify {
+    display: flex;
+    align-items: center;
+}
+
+.info-modify > div {
+    margin-left: 10px;
+}
+
+.topic-name {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    font-size: 2rem;
+}
+
+.topic-name input {
+    width: 10vw;
+    height: 3rem;
+    border: 0;
+    border-radius: 10px;
+    background: #e0e0e0;
+    box-shadow: inset 5px 5px 10px #bebebe,
+        inset -5px -5px 10px #ffffff;
+    font-size: 2rem;
+}
+
+.add-issue {
+    width: fit-content;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #e0e0e0;
+    box-shadow: 5px 5px 10px #bebebe,
+        -5px -5px 10px #ffffff;
+    font-size: 2rem;
+}
+
+.add-issue:hover {
+    cursor: pointer;
+}
+
+.add-issue {
+    margin-top: 10px;
+}
+
+.issue {
+    margin-top: 10px;
+}
+
+.option,
+.description {
+    margin-top: 30px;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+}
+
+.issue-name label,
+.issue-name input,
+.option label,
+.option input,
+.description label,
+.description input {
+    height: 2rem;
+    font-size: 2rem;
+}
+.issue-name input,
+.description input {
+    float: right;
+}
+
+.issue-name label img,
+.option label img,
+.description label img {
+    width: 2rem;
+    height: 2rem;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.issue-name input,
+.option input,
+.description input {
+    width: 65%;
+    height: 3rem;
+    border: 0;
+    border-radius: 10px;
+    background: #e0e0e0;
+    box-shadow: inset 5px 5px 10px #bebebe,
+        inset -5px -5px 10px #ffffff;
+}
+
+.option-delete:hover {
+    content: url("/images/option-delete-hover.png");
+}
+
+.option img:hover {
+    cursor: pointer;
+}
+
+.issue-edit {
+    width: fit-content;
+    margin: 40px 0 20px auto;
+}
+
+.modify,
+.issue-delete {
+    display: inline;
+    width: fit-content;
+    margin-left: 20px;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #e0e0e0;
+    box-shadow: 5px 5px 10px #bebebe,
+        -5px -5px 10px #ffffff;
+    font-size: 2rem;
+}
+
+.modify:hover,
+.issue-delete:hover {
+    cursor: pointer;
+}
+
+.issue-delete:hover {
+    background: #f14b4b;
+    color: #ffffff;
+}
