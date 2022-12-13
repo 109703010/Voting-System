@@ -1,0 +1,38 @@
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 20rem;
+}
+
+.voting_title {
+    font-size: 3rem;
+}
+
+.login_input,
+.login_button {
+    height: 3rem;
+    border: 0;
+    font-size: 2rem;
+}
+
+.login_input {
+    width: 50%;
+    border-radius: 5px;
+    background: #e0e0e0;
+    box-shadow: inset 5px 5px 10px #bebebe,
+        inset -5px -5px 10px #ffffff;
+}
+
+.login_button {
+    width: 30%;
+    border-radius: 50px;
+    background: #e0e0e0;
+    box-shadow: 5px 5px 10px #bebebe,
+        -5px -5px 10px #ffffff;
+}
+
+.login_button:hover {
+    cursor: pointer;
+}

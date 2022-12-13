@@ -1,0 +1,41 @@
+.header {
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    background-color: gainsboro;
+    border-radius: 50px;
+    background: #e0e0e0;
+    box-shadow: 5px 5px 10px #bebebe,
+        -5px -5px 10px #ffffff;
+}
+
+.logo {
+    padding: 10px;
+    color: inherit;
+    text-decoration: none;
+}
+
+.logo:hover {
+    cursor: pointer;
+}
+
+
+.logo > img {
+    height: 3rem;
+    margin-left: 20px;
+}
+
+.statistic-link {
+    margin: 0 30px 0 auto;
+}
+
+.statistic-link:hover {
+    cursor: pointer;
+}
+
+.statistic-link img {
+    width: 3rem;
+    height: 3rem;
+    padding: 10px;
+}
