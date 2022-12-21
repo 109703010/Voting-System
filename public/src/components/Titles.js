@@ -6,7 +6,7 @@ function Title(props) {
         });
         let title = document.getElementById(`title-${id}`);
         title.className += " active"
-        
+
         let contents = [...document.getElementsByClassName('content')];
         contents.map((content) => {
             content.style.display = "none";
@@ -16,9 +16,9 @@ function Title(props) {
     }
 
     return (
-        <div className="title" id={`title-${props.id}`} onClick={() => selectIssue(props.id)}>
+        <a className="title nav-link" id={`title-${props.id}`} onClick={() => selectIssue(props.id)} href="#">
             {props.name}
-        </div>
+        </a>
     );
 }
 
@@ -30,11 +30,15 @@ function Titles(props) {
 
     return (
         <div className="titles">
-            {
-                props.issues.map((issue, index) => (
-                    <Title id={issue.id} name={issue.name} selectIssue={props.selectIssue} key={index} />
-                ))
-            }
+            <ul className="nav nav-tabs">
+                {
+                    props.issues.map((issue, index) => (
+                        <li className="nav-item" key={index}>
+                            <Title id={issue.id} name={issue.name} />
+                        </li>
+                    ))
+                }
+            </ul>
         </div>
     );
 }

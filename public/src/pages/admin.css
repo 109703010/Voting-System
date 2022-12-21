@@ -13,40 +13,13 @@
     margin-left: 10px;
 }
 
-.topic-name {
-    display: flex;
-    align-items: center;
-    width: fit-content;
-    font-size: 2rem;
+.form-check {
+    display: inline-block;
+    margin-right: 5px;
 }
 
-.topic-name input {
-    width: 10vw;
-    height: 3rem;
-    border: 0;
-    border-radius: 10px;
-    background: #e0e0e0;
-    box-shadow: inset 5px 5px 10px #bebebe,
-        inset -5px -5px 10px #ffffff;
-    font-size: 2rem;
-}
-
-.add-issue {
-    width: fit-content;
-    padding: 10px 15px;
-    border-radius: 10px;
-    background: #e0e0e0;
-    box-shadow: 5px 5px 10px #bebebe,
-        -5px -5px 10px #ffffff;
-    font-size: 2rem;
-}
-
-.add-issue:hover {
-    cursor: pointer;
-}
-
-.add-issue {
-    margin-top: 10px;
+.issues {
+    width: 50%;
 }
 
 .issue {
@@ -58,44 +31,13 @@
     margin-top: 30px;
 }
 
-.option {
-    display: flex;
-    align-items: center;
-}
-
-.issue-name label,
-.issue-name input,
-.option label,
-.option input,
-.description label,
-.description input {
-    height: 2rem;
-    font-size: 2rem;
-}
-.issue-name input,
-.description input {
-    float: right;
-}
-
 .issue-name label img,
 .option label img,
 .description label img {
-    width: 2rem;
-    height: 2rem;
-    margin-left: 5px;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-left: 15px;
     margin-right: 5px;
-}
-
-.issue-name input,
-.option input,
-.description input {
-    width: 65%;
-    height: 3rem;
-    border: 0;
-    border-radius: 10px;
-    background: #e0e0e0;
-    box-shadow: inset 5px 5px 10px #bebebe,
-        inset -5px -5px 10px #ffffff;
 }
 
 .option-delete:hover {
@@ -111,25 +53,6 @@
     margin: 40px 0 20px auto;
 }
 
-.modify,
 .issue-delete {
-    display: inline;
-    width: fit-content;
-    margin-left: 20px;
-    padding: 10px 15px;
-    border-radius: 10px;
-    background: #e0e0e0;
-    box-shadow: 5px 5px 10px #bebebe,
-        -5px -5px 10px #ffffff;
-    font-size: 2rem;
-}
-
-.modify:hover,
-.issue-delete:hover {
-    cursor: pointer;
-}
-
-.issue-delete:hover {
-    background: #f14b4b;
-    color: #ffffff;
+    margin-left: 10px;
 }

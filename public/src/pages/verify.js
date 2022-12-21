@@ -47,7 +47,7 @@ function Verify() {
     return (
         <div className="verify">
             <video />
-            <div className="vote" onClick={() => verifyAndVote()}>Verify & Vote</div>
+            <div className="vote btn btn-primary" onClick={() => verifyAndVote()}>Verify & Vote</div>
         </div>
     );
 }

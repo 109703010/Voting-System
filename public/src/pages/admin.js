@@ -1,18 +1,19 @@
 function Option(props) {
     const [option, setOption] = React.useState(props.option);
     return (
-        <div className="option">
+        <div className="option form-group">
             <label htmlFor={`option${props.issue}-${props.number}`}>{`Option ${props.number} `}</label>
             <label htmlFor={`image${props.issue}-${props.number}`}>
                 <img src="/images/upload.png" alt="Upload image" />
             </label>
+            <img className="option-delete" src="/images/option-delete.png" alt="Delete option" />
             <input
+                className="form-control"
                 id={`option${props.issue}-${props.number}`}
                 value={option}
                 onChange={e => setOption(e.target.value)}
             />
             <input id={`image${props.issue}-${props.number}`} type="file" style={{ display: "none" }} />
-            <img className="option-delete" src="/images/option-delete.png" alt="Delete option" />
         </div>
     );
 }
@@ -22,15 +23,17 @@ function Issue(props) {
     const [description, setDescription] = React.useState(props.description);
     return (
         <div className="issue content" id={props.id}>
-            <div className="issue-name">
+            <div className="issue-name form-group">
                 <label htmlFor={`issue${props.id}`}>Issue Name </label>
-                <input id={`issue${props.id}`} value={name} onChange={e => setName(e.target.value)} />
+                <input className="form-control" id={`issue${props.id}`} value={name} onChange={e => setName(e.target.value)} />
             </div>
             {
                 props.options == undefined ?
-                    <div className="description">
+                    <div className="description form-group">
                         <label htmlFor={`description${props.id}`}>Description </label>
-                        <input
+                        <textarea
+                            className="form-control"
+                            rows="7"
                             id={`description${props.id}`}
                             value={description}
                             onChange={e => setDescription(e.target.value)}
@@ -50,10 +53,10 @@ function Issue(props) {
                     </div>
             }
             <div className="issue-edit">
-                <div className="modify">
+                <div className="modify btn btn-warning">
                     Modify
                 </div>
-                <div className="issue-delete">
+                <div className="issue-delete btn btn-danger">
                     Delete
                 </div>
             </div>
@@ -62,49 +65,41 @@ function Issue(props) {
 }
 
 function Admin() {
-    const PASSWORD = 'admin';
-    let input = '';
-    do {
-        input = window.prompt("Enter Your Password :");
-    } while (input != PASSWORD);
+	 const PASSWORD = 'admin';
+	 let input = '';
+	 do {
+		 input = window.prompt("Enter Your Password :");
+	 } while (input != PASSWORD);
     let fake_issues = [
-        {
-            id: 1,
-            name: 'Test-1',
-            options: [{ option: '1' }, { option: '2' }, { option: '3' }]
-        },
-        {
-            id: 2,
-            name: 'Test-2',
-            description: 'Hi',
-        },
-        {
-            id: 3,
-            name: 'Blablabla',
-            options: [{ option: '7' }, { option: '8' }, { option: '9' }]
-        }
+        { id: 1, name: '新北市 直轄市長', options: [{ option: "侯友宜" }, { option: "林佳龍" }] },
+        { id: 2, name: '新北市 市議員', options: [{ option: "陳啟能" }, { option: "王威元" }, { option: "陳俊霖" }, { option: "李余典" }, { option: "陳宛毓" }] },
+        { id: 3, name: '憲法修正案', description: "第一條之一\n\n中華民國國民年滿十八歲者，有依法選舉、罷免、創制、複決及參加公民投票之權。本憲法及法律別有規定者外，年滿十八歲者，有依法被選舉之權。\n\n憲法第一百三十條之規定，停止適用。" }
     ];
-    const [topic, setTopic] = React.useState('');
+    const [topic, setTopic] = React.useState('2022 9-in-1 voting');
     return (
         <div className="admin">
             <div className="info-modify">
-                <div className="topic-name">
-                    <label htmlFor="topic">Topic</label>
-                    <input id="topic" value={topic} onChange={e => setTopic(e.target.value)} />
+                <div>
+                    <div className="topic-name form-group">
+                        <label htmlFor="topic">Topic</label>
+                        <input className="form-control" id="topic" value={topic} onChange={e => setTopic(e.target.value)} />
+                    </div>
+                    <div className="form-check">
+                        <input className="form-check-input" id="with-option" type="checkbox" />
+                        <label className="form-check-label" htmlFor="with-option">With options</label>
+                    </div>
+                    <div className="add-issue btn btn-primary">New issue</div>
                 </div>
                 <div className="dates">
-                    <div className="date">
+                    <div className="date form-group">
                         <label htmlFor="start-date">Start date</label>
-                        <input id="start-date" type="datetime-local" />
+                        <input className="form-control" id="start-date" type="datetime-local" />
                     </div>
-                    <div className="date">
+                    <div className="date form-group">
                         <label htmlFor="end-date">End date</label>
-                        <input id="end-date" type="datetime-local" />
+                        <input className="form-control" id="end-date" type="datetime-local" />
                     </div>
                 </div>
-                <div className="add-issue">New issue</div>
-                <input id="with-option" type="checkbox"/>
-                <label htmlFor="with-option">With options</label>
             </div>
             <Titles issues={fake_issues} />
             <div className="issues">
