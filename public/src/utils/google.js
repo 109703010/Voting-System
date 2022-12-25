@@ -12,6 +12,7 @@ function handleCredentialResponse(response) {
     const clientData = parseJwt(response.credential);
     console.log(clientData)
     localStorage.setItem('img', clientData.picture);
+    localStorage.setItem('userID', clientData.sub);
     window.location.href="";
 }
 

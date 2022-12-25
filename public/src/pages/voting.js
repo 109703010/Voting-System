@@ -4,13 +4,13 @@ function Candidate(props) {
         all.map((candidate) => {
             candidate.style.borderColor = "transparent";
         });
-        localStorage.setItem('choice', props.id);
+        localStorage.setItem('choice', props.name);
         document.getElementById(props.id).style.borderColor = "grey";
     }
     return (
         <div className="candidate" id={props.id} onClick={() => selected()}>
             <div className="circle-image">
-                <img src={`/assets/${props.id}/headshot.jpg`} />
+                <img src={`/assets/options/${props.name}.jpg`} />
             </div>
             <p>{props.name}</p>
         </div>
@@ -18,22 +18,38 @@ function Candidate(props) {
 }
 
 function Voting() {
-    let fake_issue = "第一條之一\n\n中華民國國民年滿十八歲者，有依法選舉、罷免、創制、複決及參加公民投票之權。本憲法及法律別有規定者外，年滿十八歲者，有依法被選舉之權。\n\n憲法第一百三十條之規定，停止適用。";
-    let id = new URLSearchParams(location.search).get('id');
-    let type = id == 1 || id == 2 ? 'person' : id == 3 ? 'issue' : "error";
-    let fake_candidates = id == 1 ? [
-        { id: 'testMayor-1', name: '林佳龍' },
-        { id: 'testMayor-2', name: '侯友宜' }
-    ] : [
-        { id: 'testCongressman-1', name: '陳啟能' },
-        { id: 'testCongressman-2', name: '王威元' },
-        { id: 'testCongressman-3', name: '陳俊霖' },
-        { id: 'testCongressman-4', name: '李余典' },
-        { id: 'testCongressman-5', name: '陳宛毓' }
-    ];
+    const id = new URLSearchParams(location.search).get('id');
+    const type = new URLSearchParams(location.search).get('type');
+    const issueGroupID = new URLSearchParams(location.search).get('issueGroupID');
+    const [issue, setIssue] = React.useState('');
+    const [options, setOptions] = React.useState([]);
+
+    React.useEffect(() => {
+        api.getDescription(id).then(res =>
+            setIssue(res)
+        );
+        api.getOptions(id).then(res => {
+            res.pop();
+            setOptions(res)
+        });
+    }, []);
 
     function verifyAndVote() {
-        window.location.href = '/verify.html'
+        const userID = localStorage.getItem("userID");
+        const choice = localStorage.getItem("choice");
+        api.vote(userID, id, choice).then(json => {
+            if (json.err) {
+                alert(json.err)
+            } else {
+                alert(json.status)
+            }
+            window.location.href = `/issues.html?issueGroupID=${issueGroupID}`;
+        });
+    }
+
+    function specialOption(name) {
+        localStorage.setItem("choice", name);
+        verifyAndVote();
     }
 
     return (
@@ -42,20 +58,20 @@ function Voting() {
                 type == 'issue' ?
                     <div className="vote-for-issue">
                         <p className="issue-description">
-                            {fake_issue}
+                            {issue}
                         </p>
                         <div className="opinion">
-                            <div className="btn btn-success" onClick={() => verifyAndVote()}>Yes</div>
-                            <div className="btn btn-warning" onClick={() => verifyAndVote()}>No</div>
-                            <div className="btn btn-danger" onClick={() => verifyAndVote()}>Abstention</div>
+                            <div className="btn btn-success" onClick={() => specialOption("Yes")}>Yes</div>
+                            <div className="btn btn-warning" onClick={() => specialOption("No")}>No</div>
+                            <div className="btn btn-danger" onClick={() => specialOption("Abstention")}>Abstention</div>
                         </div>
                     </div> :
                     type == 'person' ?
                         <div className="vote-for-person">
                             <div className="candidates">
                                 {
-                                    fake_candidates.map((candidate, index) => (
-                                        <Candidate id={candidate.id} name={candidate.name} key={index} />
+                                    options.map((candidate, index) => (
+                                        <Candidate id={index} name={candidate.name} key={index} />
                                     ))
                                 }
                             </div>
@@ -63,7 +79,7 @@ function Voting() {
                                 <div className="btn btn-primary" onClick={() => verifyAndVote()}>
                                     Confirm
                                 </div>
-                                <div className="btn btn-danger" onClick={() => verifyAndVote()}>
+                                <div className="btn btn-danger" onClick={() => specialOption("Abstention")}>
                                     Abstention
                                 </div>
                             </div>

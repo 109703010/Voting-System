@@ -19,6 +19,7 @@
     height: fit-content;
     max-height: 250px;
     overflow: auto;
+    white-space: pre-line;
 }
 
 .go-voting {

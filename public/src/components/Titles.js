@@ -24,8 +24,10 @@ function Title(props) {
 
 function Titles(props) {
     React.useEffect(() => {
-        document.getElementsByClassName('title')[0].className += " active";
-        document.getElementsByClassName('content')[0].style.display = "block";
+        if (props.issues.length != 0) {
+            document.getElementsByClassName('title')[0].className += " active";
+            document.getElementsByClassName('content')[0].style.display = "block";
+        }
     })
 
     return (
