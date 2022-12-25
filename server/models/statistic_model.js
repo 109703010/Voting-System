@@ -1,9 +1,8 @@
 const { pool } = require('./mysqlcon');
 
-const getResult = async (info) => {
+const getResult = async (constraint) => {
     const conn = await pool.getConnection();
-    let constraint = Object.entries(info).map(([key, value]) => ({[key]: value}));
-    const [data] = await conn.query("SELECT * FROM options WHERE ? AND ?", constraint);
+    const [data] = await conn.query("SELECT * FROM options WHERE ?", constraint);
     return data;
 }
 

@@ -3,18 +3,17 @@ const { pool } = require('./mysqlcon');
 const getVotingStatus = async (info) => {
     const conn = await pool.getConnection();
     const constraint = Object.entries(info).map(([key, value]) => ({[key]: value}));
-    const result = await conn.query("SELECT * FROM voteRecord WHERE ? AND ? AND ?", constraint);
+    const result = await conn.query("SELECT * FROM voteRecord WHERE ? AND ?", constraint);
     return result;
 }
 
-const vote = async (info) => {
+const vote = async (info, constraint) => {
     const conn = await pool.getConnection();
-    const constraint = Object.entries(info).map(([key, value]) => ({[key]: value}));
     try {
         await conn.query("START TRANSACTION");
         // await conn.query("SET FOREIGN_KEY_CHECKS = 0"); # For test only
         await conn.query("INSERT INTO voteRecord SET ?", info);
-        await conn.query("UPDATE options SET number = number + 1 WHERE ?", constraint);
+        await conn.query("UPDATE options SET number = number + 1 WHERE ? AND ?", constraint);
         await conn.query("COMMIT");
     } catch (err) {
         await conn.query("ROLLBACK");
