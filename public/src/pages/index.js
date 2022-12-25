@@ -1,5 +1,5 @@
 function Login() {
-  function checkID() {
+  function goIssuesPage() {
     window.location.href = './issues.html';
   }
   return (
@@ -10,20 +10,16 @@ function Login() {
       <p className="time">
         Open until Saturday, Nov. 26, 4:00 p.m.
       </p>
-      <div className="login-input input-group mb-3">
-        <input type="text" className="form-control" placeholder="Input your ID here" aria-label="Recipient's username" aria-describedby="basic-addon2"/>
-          <div className="input-group-append">
-            <button className="btn btn-primary" type="button" onClick={() => checkID()}>Login</button>
-          </div>
-      </div>
+      <button className="btn btn-primary" type="button" onClick={() => goIssuesPage()}>Get started</button>
     </div>
   );
 }
 
 function App() {
+  const img = localStorage.getItem('img') || '';
   return (
     <React.Fragment>
-      <Header />
+      <Header img={img}/>
       <Login />
     </React.Fragment>
   );

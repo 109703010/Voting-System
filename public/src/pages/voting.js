@@ -25,17 +25,17 @@ function Voting() {
         { id: 'testMayor-1', name: '林佳龍' },
         { id: 'testMayor-2', name: '侯友宜' }
     ] : [
-        {id: 'testCongressman-1', name: '陳啟能'},
-        {id: 'testCongressman-2', name: '王威元'},
-        {id: 'testCongressman-3', name: '陳俊霖'},
-        {id: 'testCongressman-4', name: '李余典'},
-        {id: 'testCongressman-5', name: '陳宛毓'}
+        { id: 'testCongressman-1', name: '陳啟能' },
+        { id: 'testCongressman-2', name: '王威元' },
+        { id: 'testCongressman-3', name: '陳俊霖' },
+        { id: 'testCongressman-4', name: '李余典' },
+        { id: 'testCongressman-5', name: '陳宛毓' }
     ];
 
     function verifyAndVote() {
         window.location.href = '/verify.html'
     }
-    
+
     return (
         <div className="voting">
             {
@@ -78,9 +78,10 @@ function Voting() {
 }
 
 function App() {
+    const img = localStorage.getItem('img') || '';
     return (
         <React.Fragment>
-            <Header />
+            <Header img={img} />
             <Voting />
         </React.Fragment>
     );

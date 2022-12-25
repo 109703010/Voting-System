@@ -1,4 +1,4 @@
-function Header() {
+function Header(props) {
   return (
     <nav className="navbar navbar-light bg-light">
       <a className="navbar-brand" href="/index.html">
@@ -7,6 +7,9 @@ function Header() {
       <a className="statistic-link" href="/statistics.html">
         <img src="/images/pie chart.png" alt="statistic" />
       </a>
+      <div className="userInfo">
+        <img src={props.img} />
+      </div>
     </nav>
   );
 }

@@ -10,3 +10,12 @@
     height: 4rem;
     padding: 10px;
 }
+
+.userInfo {
+    display: flex;
+    align-items:flex-start;
+}
+
+.userInfo img {
+    height: 3rem;
+}

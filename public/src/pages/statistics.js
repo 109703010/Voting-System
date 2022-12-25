@@ -53,9 +53,10 @@ function Statistics() {
 }
 
 function App() {
+    const img = localStorage.getItem('img') || '';
     return (
         <React.Fragment>
-            <Header />
+            <Header img={img} />
             <Statistics />
         </React.Fragment>
     );
